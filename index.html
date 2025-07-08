@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<form class="flex gap-10" id="myForm">
+    <input class="border border-blue-500 px-10 py-1 my-5 box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);" type="text" name="title" placeholder="name" id="title">
+    <input class="border border-blue-500 px-10 py-1 my-5 box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);" type="text" name="description" placeholder="model" id="description">
+    <input class="border border-blue-500 px-10 py-1 my-5 box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);" type="text" name="image_url" placeholder="Image URL" id="image_url">
+    <select class="border border-blue-500 px-10 py-1 my-5 box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);"  name="category" id="category">
+        <option value="electronics">electronics</option>
+        <option value="clothing">clothing</option>
+        <option value="books">books</option>
+        <option value="home">home</option>
+        <option value="other">other</option>
+    </select>
+    <select class="border border-blue-500 px-10 py-1 my-5 box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);" name="condition" id="condition">
+        <option value="new">new</option>
+        <option value="used">used</option>
+        <option value="broken">broken</option>
+    </select>
+    <button class="border border-blue-500 py-5 px-5 rounded-full"  id="btn" >btn</button>
+</form>
+<div id="wrapper"></div>
+<div class="loader" id="loader"></div>
+
+
+
+
+
+
+<script src="main.js"></script>
+</body>
+</html>
