@@ -75,10 +75,18 @@ function render(get) {
     get.forEach(element => {
         let box = document.createElement("div");
         box.innerHTML = `
+<div class="items-center w-full">
+<div class="bg-red-300 items-center justify-center flex   p-6">
+<div>
         <p class="font-mono font-bold text-xl ">${element.id}</p>
         <p class="font-mono font-bold text-xl ">${element.title} </p>
         <p class="font-mono font-bold text-xl ">${element.description} </p>
-        <img class="w-1/4 h-1/4" src="${element.image_url}" alt="${element.title}"/>
+        
+</div>
+<img class=" max-w-[300px]  h-[200px]" src="${element.image_url}" alt="${element.title}"/>
+        </div>
+</div>
+
         `
         wrapper.appendChild(box);
     })
