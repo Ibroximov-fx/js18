@@ -78,7 +78,7 @@ function render(get) {
         <p class="font-mono font-bold text-xl ">${element.id}</p>
         <p class="font-mono font-bold text-xl ">${element.title} </p>
         <p class="font-mono font-bold text-xl ">${element.description} </p>
-        <img class="w-1/2 h-1/2" src="${element.image_url}" alt="${element.title}"/>
+        <img class="w-1/4 h-1/4" src="${element.image_url}" alt="${element.title}"/>
         `
         wrapper.appendChild(box);
     })
