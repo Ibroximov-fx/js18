@@ -14,3 +14,33 @@
     display: none;
 }
 @keyframes l1 {to{clip-path: inset(0 -34% 0 0)}}
+.btn_box{
+    height: 200px;
+    background-color: white;
+    margin: auto;
+    position:relative;
+}
+.x_btn{
+position: absolute;
+    color: black;
+    top:0;
+    right:10px;
+}
+.back_btn{
+    position: absolute;
+    bottom:10px;
+    left:10px;
+    background-color: yellow;
+}
+.delete_btn{
+    position: absolute;
+    bottom:10px;
+    right:10px;
+    background-color: red;
+}
+.btn_box_text{
+   padding-top: 85px;
+    padding-left: 60px;
+    font-weight: bold;
+    font-size: 20px;
+}

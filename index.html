@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-gray-200">
 <form class="flex gap-10" id="myForm">
     <input class="border border-blue-500 px-10 py-1 my-5 box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);" type="text" name="title" placeholder="name" id="title">
     <input class="border border-blue-500 px-10 py-1 my-5 box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);" type="text" name="description" placeholder="model" id="description">
@@ -29,6 +30,14 @@
 </form>
     <div class="grid grid-cols-3 gap-4" id="wrapper"></div>
 <div class="loader" id="loader"></div>
+<div class="absolute top-[200px] right-[570px] w-[400px] hidden" id="btn_box">
+<div class="btn_box">
+    <p class="btn_box_text">Do you really want to delete?</p>
+    <button class="x_btn" id="x_btn">x</button>
+    <button class="back_btn" id="back_btn">back</button>
+    <button class="delete_btn" id="delete_btn">delete</button>
+</div>
+</div>
 
 
 
