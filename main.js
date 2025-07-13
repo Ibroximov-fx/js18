@@ -10,8 +10,9 @@ let btn_box = document.querySelector('#btn_box');
 let x_btn = document.querySelector('#x_btn');
 let back_btn = document.querySelector('#back_btn');
 let delete_btn = document.querySelector('#delete_btn');
-let card
-let regerEx = /^[a-zA-Z0-9]{3,}$/
+let card = false
+let id
+let regerEx = /^[a-zA-Z0-9]{3,}\s*[a-zA-Z0-9]{2,}$/
 let regerExx = /^https:\/\/.+/i
 myForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -28,24 +29,46 @@ myForm.addEventListener('submit', (event) => {
 
 async function postData() {
     try {
-        loader.style.display = "block";
-        let data_url = await fetch("https://effective-mobile.duckdns.org/api/ads/", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                title: title.value,
-                description: description.value,
-                image_url: image_url.value,
-                category: category.value,
-                condition: condition.value
+        if (card === false){
+            loader.style.display = "block";
+            let data_url = await fetch("https://effective-mobile.duckdns.org/api/ads/", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    title: title.value,
+                    description: description.value,
+                    image_url: image_url.value,
+                    category: category.value,
+                    condition: condition.value
+                })
             })
-        })
-
-        if (data_url.ok) {
-            alert("Success!")
-            fetchData()
-        } else {
-            alert("Error!")
+            if (data_url.ok) {
+                alert("Success!")
+                fetchData()
+            } else {
+                alert("Error!")
+            }
+        }else{
+            let putData = await fetch(`https://effective-mobile.duckdns.org/api/ads/${id}/`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    title: title.value,
+                    description: description.value,
+                    image_url: image_url.value,
+                    category: category.value,
+                    condition: condition.value
+                }),
+            })
+            if(putData.ok){
+                alert ("you have temporarily changed")
+                card = false
+                fetchData()
+            }else{
+                alert('The data transfer failed.')
+            }
         }
     } catch (error) {
         alert(error)
@@ -63,7 +86,7 @@ async function postData() {
 async function fetchData() {
     try {
         loader.style.display = "block";
-        let data = await fetch("https://effective-mobile.duckdns.org/api/ads/", {
+        let data = await fetch("https://effective-mobile.duckdns.org/api/ads/",{
             method: "GET",
         })
         let json = await data.json();
@@ -105,6 +128,7 @@ function render(get) {
     btn_edit.forEach(btn_edits => {
         btn_edits.addEventListener("click", (event) => {
             inputEdit(btn_edits.getAttribute("data-id"))
+            id = btn_edits.getAttribute("data-id");
         })
     })
     btn_delete.forEach(btn_deletes => {
@@ -121,9 +145,6 @@ function render(get) {
                 btn_box.style.display = "none";
                 alert("you did not delete this file")
             })
-
-
-
         })
     })
 }
@@ -138,6 +159,7 @@ async function inputEdit(id) {
     image_url.value = inputparse.image_url;
     category.value = inputparse.category;
     condition.value = inputparse.condition;
+    card = true
 }
 
 async function inputDelite(id) {
